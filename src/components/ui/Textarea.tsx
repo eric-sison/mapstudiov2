@@ -1,5 +1,5 @@
-import * as React from "react"
-import { cn } from "@mapstudio/components/utils/shadcn"
+import * as React from "react";
+import { cn } from "@mapstudio/components/utils/shadcn";
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<"textarea">>(
   ({ className, ...props }, ref) => {
@@ -12,9 +12,9 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<"tex
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-Textarea.displayName = "Textarea"
+);
+Textarea.displayName = "Textarea";
 
-export { Textarea }
+export { Textarea };

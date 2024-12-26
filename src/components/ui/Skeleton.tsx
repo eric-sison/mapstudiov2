@@ -1,7 +1,7 @@
-import { cn } from "@mapstudio/components/utils/shadcn"
+import { cn } from "@mapstudio/components/utils/shadcn";
 
 function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("animate-pulse rounded-md bg-muted", className)} {...props} />
+  return <div className={cn("animate-pulse rounded-md bg-muted", className)} {...props} />;
 }
 
-export { Skeleton }
+export { Skeleton };

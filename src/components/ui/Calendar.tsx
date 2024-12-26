@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { buttonVariants } from "@mapstudio/components/ui/Button"
-import { cn } from "@mapstudio/components/utils/shadcn"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { buttonVariants } from "@mapstudio/components/ui/Button";
+import { cn } from "@mapstudio/components/utils/shadcn";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker } from "react-day-picker";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
   return (
@@ -45,15 +45,15 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
       components={{
         Chevron: (props) => {
           if (props.orientation === "left") {
-            return <ChevronLeft className={cn("h-4 w-4", className)} {...props} />
+            return <ChevronLeft className={cn("h-4 w-4", className)} {...props} />;
           }
-          return <ChevronRight className={cn("h-4 w-4", className)} {...props} />
+          return <ChevronRight className={cn("h-4 w-4", className)} {...props} />;
         },
       }}
       {...props}
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = "Calendar";
 
-export { Calendar }
+export { Calendar };
