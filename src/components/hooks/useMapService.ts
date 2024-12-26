@@ -7,7 +7,7 @@ import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import View from "ol/View";
 
-export const useMap = (ref: RefObject<HTMLDivElement>) => {
+export const useMapService = (ref: RefObject<HTMLDivElement>) => {
   const [mapService, setMapService] = useState<MapService>();
 
   useEffect(() => {
@@ -50,5 +50,5 @@ export const useMap = (ref: RefObject<HTMLDivElement>) => {
     };
   }, [ref]);
 
-  return { mapService };
+  return mapService;
 };

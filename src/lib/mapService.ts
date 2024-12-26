@@ -1,7 +1,8 @@
-import { Map } from "ol";
+import { Map, View } from "ol";
 import { Coordinate } from "ol/coordinate";
 import BaseLayer from "ol/layer/Base";
 import { MapOptions } from "ol/Map";
+import { fromLonLat, get as getProjection, toLonLat, transform } from "ol/proj";
 
 import { IMapService } from "./interfaces/iMapService";
 
@@ -20,6 +21,10 @@ export class MapService implements IMapService {
 
   getMap(): Map | null {
     return this.map;
+  }
+
+  destroy() {
+    this.map?.setTarget(undefined);
   }
 
   // Utility methods
@@ -48,7 +53,47 @@ export class MapService implements IMapService {
     return this.map?.getView().getZoom();
   }
 
-  destroy() {
-    this.map?.setTarget(undefined);
+  // Projection methods
+  changeProjection(newProjectionCode: string): void {
+    if (!this.map) return;
+
+    const oldView = this.map.getView();
+    const oldProjection = oldView.getProjection();
+    const newProjection = getProjection(newProjectionCode);
+
+    if (!newProjection) {
+      console.error("Invalid projection:", newProjectionCode);
+      return;
+    }
+
+    // Get current view state
+    const oldCenter = oldView.getCenter();
+    if (!oldCenter) return;
+
+    // Convert center to lat/lon (EPSG:4326) as intermediate step
+    const latLonCenter = toLonLat(oldCenter, oldProjection);
+
+    // Convert from lat/lon to new projection
+    const newCenter = fromLonLat(latLonCenter, newProjection);
+
+    // Create new view with new projection
+    const newView = new View({
+      projection: newProjection,
+      center: newCenter,
+      zoom: oldView.getZoom(),
+      constrainResolution: true,
+    });
+
+    this.map.setView(newView);
+    this.map.renderSync();
+  }
+
+  getCurrentProjection(): string | undefined {
+    return this.map?.getView().getProjection().getCode();
+  }
+
+  // Helper method to transform coordinates between projections
+  transformCoordinates(coords: Coordinate, source: string, destination: string): Coordinate {
+    return transform(coords, source, destination);
   }
 }
