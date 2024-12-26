@@ -2,9 +2,10 @@ import { healthcheckHandler } from "@mapstudio/server/handlers/healthcheck"
 import { Hono } from "hono"
 import { handle } from "hono/vercel"
 
-export const app = new Hono().basePath("/api")
+const app = new Hono().basePath("/api")
 
-export const routes = app.route("/v1/healthcheck", healthcheckHandler)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const routes = app.route("/v1/healthcheck", healthcheckHandler)
 
 export const GET = handle(app)
 export const POST = handle(app)

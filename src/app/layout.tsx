@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mapstudio/components/features/theme/ThemeProvide
 import "./globals.css"
 
 import { type PropsWithChildren } from "react"
+import { QueryClientProvider } from "@mapstudio/components/features/queryCLient/QueryClientProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,11 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <QueryClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </QueryClientProvider>
       </body>
     </html>
   )
