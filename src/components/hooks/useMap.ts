@@ -28,8 +28,9 @@ export const useMap = (ref: RefObject<HTMLDivElement>) => {
 
       // set the default view
       view: new View({
-        center: [7.85, 47.983333],
-        zoom: 2,
+        projection: "EPSG:4326",
+        center: [0, 52],
+        zoom: 6,
       }),
 
       // set the default interactions
