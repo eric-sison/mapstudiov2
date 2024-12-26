@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 
-import { PropsWithChildren } from "react"
+import { type PropsWithChildren } from "react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
