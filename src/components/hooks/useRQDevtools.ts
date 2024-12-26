@@ -1,17 +1,17 @@
-import { create } from "zustand"
-import { devtools } from "zustand/middleware"
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type RQDevtoolsState = {
-  show: boolean
-}
+  show: boolean;
+};
 
 type RQDevtoolsActions = {
-  toggleDevtools: () => void
-}
+  toggleDevtools: () => void;
+};
 
 export const useRQDevtoolsInProd = create<RQDevtoolsState & RQDevtoolsActions>()(
   devtools((set, get) => ({
     show: false,
     toggleDevtools: () => set(() => ({ show: !get().show }), false, "toogle_devtools_in_prod"),
   }))
-)
+);

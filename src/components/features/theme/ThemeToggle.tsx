@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@mapstudio/components/ui/Button"
+import * as React from "react";
+import { Button } from "@mapstudio/components/ui/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@mapstudio/components/ui/DropdownMenu"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+} from "@mapstudio/components/ui/DropdownMenu";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export const ThemeToggle: React.FunctionComponent = () => {
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -29,5 +29,5 @@ export const ThemeToggle: React.FunctionComponent = () => {
         <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};

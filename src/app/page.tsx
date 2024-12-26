@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { ThemeToggle } from "@mapstudio/components/features/theme/ThemeToggle"
+import Image from "next/image";
+import { ThemeToggle } from "@mapstudio/components/features/theme/ThemeToggle";
 
 export default function Home() {
   return (
@@ -68,5 +68,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
