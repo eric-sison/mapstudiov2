@@ -19,6 +19,13 @@ export const Map: FunctionComponent = () => {
       <div className="z-50 absolute flex items-center gap-2">
         <Button
           onClick={() => {
+            mapService?.setCenter([125.181828, 6.117567]);
+          }}
+        >
+          Set Center
+        </Button>
+        <Button
+          onClick={() => {
             console.log(mapService?.getMap()?.getView().getProjection());
           }}
         >
