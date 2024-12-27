@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# docker compose
+/docker-compose/data
+
 # next.js
 /.next/
 /out/
