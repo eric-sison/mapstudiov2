@@ -11,6 +11,22 @@ services:
       - POSTGRES_DB=mapstudio
     volumes:
       - ./data:/var/lib/postgresql/data
+    networks:
+      mars:
+        ipv4_address: 10.10.1.2
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    networks:
+      mars:
+        ipv4_address: 10.10.1.4
+    ports:
+      - "2781:80"
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ericsison.dev@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
 
   # Activate redis when needed
   # redis:
@@ -25,3 +41,11 @@ services:
   #   command: /bin/sh -c "redis-server --requirepass redis_password"
   #   ports:
   #     - "6379:6379"
+
+networks:
+  mars:
+    name: mars
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.10.1.0/24"
