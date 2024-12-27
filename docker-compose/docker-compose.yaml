@@ -1,0 +1,27 @@
+services:
+  pg:
+    image: postgres:15-alpine
+    container_name: mapstudio-pg
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=mapstudio
+      - POSTGRES_PASSWORD=mapstudio_password #! change this in prod
+      - POSTGRES_DB=mapstudio
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  # Activate redis when needed
+  # redis:
+  #   image: redis:alpine3.20
+  #   container_name: mapstudio-redis
+  #   restart: always
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+  #     interval: 1s
+  #     timeout: 3s
+  #     retries: 5
+  #   command: /bin/sh -c "redis-server --requirepass redis_password"
+  #   ports:
+  #     - "6379:6379"
